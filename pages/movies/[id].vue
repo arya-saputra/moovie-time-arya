@@ -72,7 +72,7 @@
             <!-- REVIEWS -->
             <div class="w-[1200px] mt-[5%] mx-auto relative pb-[5%]">
                 <h3 class="text-[red] font-[500]">REVIEWS</h3>
-                <Carousel v-if="reviews.results?.length" v-bind="config" class="w-full mt-6 py-3">
+                <Carousel v-if="reviews.results?.length" v-bind="config" class="w-full items-start mt-6 py-3">
                     <Slide v-for="review in reviews.results" :key="review.id" class="bg-[#F9F9F9] p-7 rounded-lg block text-left shadow">
                         <div class="review-content">
                             <div class="flex w-full text-left items-center justify-between">
@@ -93,7 +93,7 @@
                                     <span class="text-[36px]">{{ review.author_details.rating }}</span>
                                 </div>
                             </div>
-                            <p class="mt-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sunt voluptates, itaque praesentium, libero saepe vel sit facere perferendis quo magni sint, nesciunt aut. Consectetur possimus similique unde laboriosam distinctio.</p>
+                            <p class="mt-6">{{ review.content }}</p>
                         </div>
                     </Slide>
 
@@ -131,7 +131,6 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const config = ref({
     itemsToShow: 2,
-    height: '40vh',
     snapAlign: 'start',
     gap:25
 });
