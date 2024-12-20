@@ -161,3 +161,8 @@ onMounted(() => {
     });
 })
 </script>
+<style scoped>
+.carousel__slide {
+    align-items: start !important;
+}
+</style>
