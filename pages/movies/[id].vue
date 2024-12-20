@@ -77,12 +77,12 @@
                         <div class="review-content">
                             <div class="flex w-full text-left items-center justify-between">
                                 <div class="flex gap-2">
-                                    <div class="rounded-full h-[40px] w-[40px] bg-[grey]">
-
+                                    <div class="rounded-full h-[40px] w-[40px] bg-[grey] overflow-hidden">
+                                        <img :src="`${baseUrl}${review.author_details.avatar_path}`" class="w-full" />
                                     </div>
                                     <div class="ml-2">
                                         <h3>{{ review.author }}</h3>
-                                        <p class="text-[10px]">December 18, 2020</p>
+                                        <p class="text-[10px]">{{ review.created_at }}</p>
                                     </div>
                                 </div>
                                 <div class="py-2 px-4 bg-[#c1c1c1] flex justify-center items-start rounded">
