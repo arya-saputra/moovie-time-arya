@@ -35,9 +35,9 @@
                 </svg>
                 <div class="absolute top-full left-0 w-full bg-[#000000E5] h-[180px] hidden group-hover:block overflow-y-scroll rounded-b">
                     <div v-for="k in keywords?.results" class="px-2 py-2 hover:bg-[#ccc] hover:text-[black]">
-                        <NuxtLink :to="`/search?k=${k.name}`">
+                        <a :href="`/search?k=${k.name}`">
                             {{ k.name }}
-                        </NuxtLink>
+                        </a>
                     </div>
                 </div>
             </form>
@@ -53,9 +53,9 @@
 
                     <div class="absolute top-[110%] left-0 w-full bg-white text-black h-[280px] hidden group-hover:block overflow-y-scroll rounded-b">
                         <div v-for="k in genres.genres" class="px-2 py-2 hover:bg-[#ccc] hover:text-[black]">
-                            <NuxtLink :to="`/search?g=${k.id}`">
+                            <a :href="`/search?g=${k.id}`">
                                 {{ k.name }}
-                            </NuxtLink>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
-# Nuxt Minimal Starter
+# Senior Frontend Engineer Technical Test - M. ARYA YUDHA SAPUTRA
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Live version (Deployed by Vercel) -> [Click here](https://moovie-time-arya.vercel.app/).
 
 ## Setup
 
@@ -72,4 +72,4 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Check out the [my personal website](https://aryasaputra.my.id) for more information.
