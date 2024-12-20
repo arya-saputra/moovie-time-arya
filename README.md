@@ -20,6 +20,13 @@ yarn install
 bun install
 ```
 
+Please put these variables into your *env
+
+```
+VITE_API_MOVIE_URL=https://api.themoviedb.org
+VITE_API_MOVIE_KEY=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMzVjNjcwMjFjZDRiMDhmMzQ2YzdjNGQ4YTg4YmIxOCIsIm5iZiI6MTczNDYxMzg3Ni44MjQsInN1YiI6IjY3NjQxYjc0OGQxY2ZkYzUyMjRhNTljYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RvPXFyvt9kYjgLXERVJo98UhyCW1cAyDCoyhnHQQh7Q
+```
+
 ## Development Server
 
 Start the development server on `http://localhost:3000`:
