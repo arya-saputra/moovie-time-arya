@@ -6,7 +6,7 @@
                 <h3 class="text-[24px]">Movies</h3>
             </div>
             <aside class="filter-container w-[27%]">
-                <div class="mt-[10%] bg-[#12161d] min-h-[20vh] w-full">
+                <div class="mt-[10%] bg-[#12161d] min-h-[20vh] w-full shadow">
                     <div class="sort-title px-3 py-5 w-full border border-t-0 border-x-0 border-b-[#333]">
                         Sort Result By
                     </div>
@@ -54,9 +54,13 @@
             </aside>
             <section class="movie-container w-[70%]">
                 <div class="container max-w-[1200px] mx-auto w-full">
-                    <div class="container-movies mt-7 flex justify-between flex-wrap">
+                    <div v-if="movieData.results?.length" class="container-movies mt-7 flex justify-between flex-wrap">
                         <MCard v-for="movie in movieData?.results" :movie="movie" :genres="genres" customClass="w-[24%]"></MCard>
+                        <div class="w-full text-center mt-3">
+                            <button class="bg-[#FF0000] p-2 text-white rounded-full px-9" @click="options.page++; search()">Load More</button>
+                        </div>
                     </div>
+                    <div v-else class="flex w-full h-[40vh] justify-center items-center text-[#777777]">No Movies available</div>
                 </div>
             </section>
         </div>
@@ -72,12 +76,12 @@ const route = useRoute();
 const movieData = ref({});
 const baseUrl = ref('http://image.tmdb.org/t/p/w500/');
 const genres = ref([]);
-
 const nowPlay = ref([]);
 
 const options = ref({
     sort:"popularity.desc",
-    genres:[]
+    genres:[],
+    page:1,
 });
 // <option>Release Date</option>
 /* <option>Title A-Z</option>
@@ -116,12 +120,16 @@ const search = () => {
         query = query + `&with_genres=${options.value.genres}`
     }
 
-    query = query + '&page=1';
+    query = query + '&page=' + options.value.page;
 
     movieApi.getDiscover(query).then((res) => {
-        movieData.value = res.data;
+        if (options.value.page == 1) {
+            movieData.value = res.data;
+        } else {
+            movieData.value.results.push(...res.data.results);
+        }
     });
-}
+};
 
 onMounted(() => {
     if (route.query) {

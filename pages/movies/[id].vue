@@ -6,7 +6,7 @@
                 <!-- ${baseUrl}${movie.backdrop_path} -->
                 <img :src="`${baseUrl}${movie.poster_path}`" class="absolute w-[20%] rounded shadow" />
                 <div class="pl-[22%]">
-                    <h4 class="text-[18px]">2000</h4>
+                    <h4 class="text-[18px]">{{ movie.release_date?.split("-")[0] }}</h4>
                     <h2 class="text-[36px] font-[500]">{{ movie.title }}</h2>
                     <p class="text-sm">
                         <span v-for="(gen,k) in movie.genres">
@@ -72,7 +72,7 @@
             <!-- REVIEWS -->
             <div class="w-[1200px] mt-[5%] mx-auto relative pb-[5%]">
                 <h3 class="text-[red] font-[500]">REVIEWS</h3>
-                <Carousel v-bind="config" class="w-full mt-6 py-3">
+                <Carousel v-if="reviews.results?.length" v-bind="config" class="w-full mt-6 py-3">
                     <Slide v-for="review in reviews.results" :key="review.id" class="bg-[#F9F9F9] p-7 rounded-lg block text-left shadow">
                         <div class="flex w-full text-left items-center justify-between">
                             <div class="flex gap-2">
@@ -100,6 +100,7 @@
                         <Pagination />
                     </template> -->
                 </Carousel>
+                <div v-else class="flex w-full h-[20vh] justify-center items-center text-[#333]">No Reviews</div>
             </div>
         </section>
 
@@ -108,9 +109,10 @@
             <div class="w-[1200px] mt-[5%] mx-auto relative pb-[5%]">
                 <h3 class=" font-[500]">RECOMMENDATION MOVIES</h3>
 
-                <div class="recommendation-wrapper mt-4 w-full flex overflow-x-scroll gap-3">
+                <div v-if="recommendations.results?.length" class="recommendation-wrapper mt-4 w-full flex overflow-x-scroll gap-3">
                     <MCard v-for="(rec, k) in recommendations?.results" :movie="rec" :genres="genres" customClass="min-w-[285px]"></MCard>
                 </div>
+                <div v-else class="flex w-full h-[20vh] justify-center items-center text-[#777777]">No Movies</div>
             </div>
         </section>
     </section>
@@ -158,5 +160,3 @@ onMounted(() => {
     });
 })
 </script>
-
-<!-- {"adult":false,"backdrop_path":"/bHkn3yuOFdu5LJcq67Odofhx6cb.jpg","belongs_to_collection":null,"budget":250000000,"genres":[{"id":28,"name":"Action"},{"id":14,"name":"Fantasy"},{"id":35,"name":"Comedy"}],"homepage":"https://www.amazon.com/salp/redonemovie","id":845781,"imdb_id":"tt14948432","origin_country":["US"],"original_language":"en","original_title":"Red One","overview":"After Santa Claus (codename: Red One) is kidnapped, the North Pole's Head of Security must team up with the world's most infamous tracker in a globe-trotting, action-packed mission to save Christmas.","popularity":6741.399,"poster_path":"/cdqLnri3NEGcmfnqwk2TSIYtddg.jpg","production_companies":[{"id":73669,"logo_path":"/9JmgzVUNvUN5KhZjmiVHEzPtFCc.png","name":"Seven Bucks Productions","origin_country":"US"},{"id":92693,"logo_path":"/rMKRo8kFoJKxZr0MFEVRoZ8b54E.png","name":"The Detective Agency","origin_country":"US"},{"id":25998,"logo_path":null,"name":"Chris Morgan Productions","origin_country":"US"},{"id":21,"logo_path":"/usUnaYV6hQnlVAXP6r4HwrlLFPG.png","name":"Metro-Goldwyn-Mayer","origin_country":"US"}],"production_countries":[{"iso_3166_1":"US","name":"United States of America"}],"release_date":"2024-10-31","revenue":175204878,"runtime":124,"spoken_languages":[{"english_name":"Georgian","iso_639_1":"ka","name":"ქართული"},{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"The mission to save Christmas is on.","title":"Red One","video":false,"vote_average":6.9,"vote_count":949} -->

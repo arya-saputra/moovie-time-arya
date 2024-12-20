@@ -1,7 +1,7 @@
 <template>
-    <!-- <section v-if="nowPlay" class="hero-carousel bg-[#1E232B] py-[8%]">
+    <section class="hero-carousel bg-[#1E232B] py-[8%]">
         <Carousel v-bind="config" class="hero-slides">
-            <Slide v-for="slide in nowPlay?.results" :key="slide.id">
+            <Slide v-for="slide in movies" :key="slide.id">
                 <NuxtLink :to="`/movies/${slide.id}`">
                     <div class="flex text-white w-full text-left px-[50px]">
                         <div class="cover-image w-[30%] relative z-[2]">
@@ -31,75 +31,27 @@
                 <Pagination />
             </template>
         </Carousel>
-    </section> -->
-    <MHomeHero :movies="nowPlay.results"></MHomeHero>
-    <section class="movie-contaniner py-[10%] bg-[#1b1e22] text-white">
-        <div class="container max-w-[1200px] mx-auto w-full">
-            <div class="container-head flex justify-between relative">
-                <div class="bg-[#E74C3C] h-[6px] top-[-8px] w-[100px] absolute"></div>
-                <h3 class="text-[24px]">Discover Movies</h3>
-                <div class="flex justify-end gap-2">
-                    <button class="bg-[#FF0000] text-white rounded-full py-1 px-4 text-[14px]">Popularity</button>
-                    <button class="focus:bg-[#FF0000] bg-[#00000033] text-white rounded-full py-1 px-4 text-[14px]">Release Date</button>
-                </div>
-            </div>
-
-            <div class="container-movies mt-10 flex justify-between flex-wrap">
-                <MCard v-for="movie in movieData?.results" :movie="movie" :genres="genres" customClass="w-[19%]"></MCard>
-            </div>
-        </div>
     </section>
-  </template>
-  <script setup>
-  import "vue3-carousel/dist/carousel.css";
-  import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
-  import movieApi from "~/services/movie";
-  import MCard from '~/components/movie/MCard.vue';
-  import MHomeHero from '~/components/home/MHomeHero.vue';
-  
-  const movieData = ref({});
-  const genres = ref([]);
-  const config = ref({
+</template>
+<script setup>
+import { useMovieStore } from "~/stores/movie";
+
+const movieStore = useMovieStore();
+const { genres } = storeToRefs(movieStore);
+const baseUrl = ref('http://image.tmdb.org/t/p/w500/');
+
+const props = defineProps({
+    movies: Object,
+});
+
+const findGenre = (id) => {
+    const genre = genres.value.genres.find((genre) => genre.id === id);
+    return genre;
+};
+
+const config = ref({
     itemsToShow: 2.6,
     height: '60vh',
     wrapAround: true,
-  });
-  
-  const nowPlay = ref([]);
-  
-  onMounted(() => {
-    movieApi.getDiscover("include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc").then((res) => {
-      movieData.value = res.data;
-    });
-  
-    movieApi.getNowPlaying('language=en-US&page=1').then((res) => {
-      nowPlay.value = res.data;
-    });
-  
-    movieApi.getGenre().then((res) => {
-      genres.value = res.data.genres;
-    });
-  });
-  </script>
-  <style>
-  .hero-slides .carousel__slide.carousel__slide--active {
-    transform: scale(1.4);
-    position: relative;
-    z-index: 3;
-    filter: brightness(1);
-  }
-  
-  .hero-slides .carousel__slide {
-    filter: brightness(.5);
-  }
-
-  .carousel__pagination-button::after {
-    width: 10px;
-    height: 10px;
-    border-radius: 60px;
-  }
-  .carousel__pagination-button--active::after {
-    background: #E74C3C !important;
-    width: 60px;
-  }
-  </style>
+});
+</script>
