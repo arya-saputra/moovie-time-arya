@@ -74,25 +74,27 @@
                 <h3 class="text-[red] font-[500]">REVIEWS</h3>
                 <Carousel v-if="reviews.results?.length" v-bind="config" class="w-full mt-6 py-3">
                     <Slide v-for="review in reviews.results" :key="review.id" class="bg-[#F9F9F9] p-7 rounded-lg block text-left shadow">
-                        <div class="flex w-full text-left items-center justify-between">
-                            <div class="flex gap-2">
-                                <div class="rounded-full h-[40px] w-[40px] bg-[grey]">
+                        <div class="review-content">
+                            <div class="flex w-full text-left items-center justify-between">
+                                <div class="flex gap-2">
+                                    <div class="rounded-full h-[40px] w-[40px] bg-[grey]">
 
+                                    </div>
+                                    <div class="ml-2">
+                                        <h3>{{ review.author }}</h3>
+                                        <p class="text-[10px]">December 18, 2020</p>
+                                    </div>
                                 </div>
-                                <div class="ml-2">
-                                    <h3>{{ review.author }}</h3>
-                                    <p class="text-[10px]">December 18, 2020</p>
+                                <div class="py-2 px-4 bg-[#c1c1c1] flex justify-center items-start rounded">
+                                    <svg width="15" height="14" class="mt-3" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.58155 1.13274C6.92863 0.326777 8.07137 0.326779 8.41845 1.13274L9.56338 3.79138C9.70816 4.12756 10.025 4.35778 10.3895 4.39158L13.2718 4.65891C14.1456 4.73995 14.4987 5.82676 13.8394 6.40591L11.6647 8.31637C11.3897 8.55794 11.2687 8.93044 11.3492 9.28751L11.9856 12.1114C12.1786 12.9674 11.2541 13.6391 10.4995 13.1911L8.01056 11.7132C7.69584 11.5263 7.30416 11.5263 6.98944 11.7132L4.50046 13.1911C3.74593 13.6391 2.82144 12.9674 3.01437 12.1114L3.65082 9.28751C3.73129 8.93044 3.61026 8.55794 3.33527 8.31637L1.16056 6.40591C0.501297 5.82676 0.854425 4.73995 1.7282 4.65891L4.61051 4.39158C4.97497 4.35778 5.29184 4.12756 5.43662 3.79138L6.58155 1.13274Z" fill="#FFB802"/>
+                                    </svg>
+
+                                    <span class="text-[36px]">{{ review.author_details.rating }}</span>
                                 </div>
                             </div>
-                            <div class="py-2 px-4 bg-[#c1c1c1] flex justify-center items-start rounded">
-                                <svg width="15" height="14" class="mt-3" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.58155 1.13274C6.92863 0.326777 8.07137 0.326779 8.41845 1.13274L9.56338 3.79138C9.70816 4.12756 10.025 4.35778 10.3895 4.39158L13.2718 4.65891C14.1456 4.73995 14.4987 5.82676 13.8394 6.40591L11.6647 8.31637C11.3897 8.55794 11.2687 8.93044 11.3492 9.28751L11.9856 12.1114C12.1786 12.9674 11.2541 13.6391 10.4995 13.1911L8.01056 11.7132C7.69584 11.5263 7.30416 11.5263 6.98944 11.7132L4.50046 13.1911C3.74593 13.6391 2.82144 12.9674 3.01437 12.1114L3.65082 9.28751C3.73129 8.93044 3.61026 8.55794 3.33527 8.31637L1.16056 6.40591C0.501297 5.82676 0.854425 4.73995 1.7282 4.65891L4.61051 4.39158C4.97497 4.35778 5.29184 4.12756 5.43662 3.79138L6.58155 1.13274Z" fill="#FFB802"/>
-                                </svg>
-
-                                <span class="text-[36px]">{{ review.author_details.rating }}</span>
-                            </div>
+                            <p class="mt-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sunt voluptates, itaque praesentium, libero saepe vel sit facere perferendis quo magni sint, nesciunt aut. Consectetur possimus similique unde laboriosam distinctio.</p>
                         </div>
-                        <p class="mt-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sunt voluptates, itaque praesentium, libero saepe vel sit facere perferendis quo magni sint, nesciunt aut. Consectetur possimus similique unde laboriosam distinctio.</p>
                     </Slide>
 
                     <!-- <template #addons>
