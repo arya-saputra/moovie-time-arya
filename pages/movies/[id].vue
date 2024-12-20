@@ -73,7 +73,7 @@
             <div class="w-[1200px] mt-[5%] mx-auto relative pb-[5%]">
                 <h3 class="text-[red] font-[500]">REVIEWS</h3>
                 <Carousel v-if="reviews.results?.length" v-bind="config" class="w-full items-start mt-6 py-3">
-                    <Slide v-for="review in reviews.results" :key="review.id" class="bg-[#F9F9F9] p-7 rounded-lg block text-left shadow">
+                    <Slide v-for="review in reviews.results" :key="review.id" class="bg-[#F9F9F9] p-7 rounded-lg block text-left shadow items-start">
                         <div class="review-content">
                             <div class="flex w-full text-left items-center justify-between">
                                 <div class="flex gap-2">
