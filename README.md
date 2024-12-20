@@ -72,4 +72,14 @@ yarn preview
 bun run preview
 ```
 
+Technical Specifications : 
+
+Markup language : HTML5
+Styling : Tailwind / Tailwind Nuxt, CSS
+Programming language : Javascript
+Features : Axios, Pinia
+Framework name : Nuxt.js 3
+API : The Movie DB
+Server : Vercel
+
 Check out the [my personal website](https://aryasaputra.my.id) for more information.
