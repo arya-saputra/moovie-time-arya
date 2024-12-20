@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="ml-2">
                                         <h3>{{ review.author }}</h3>
-                                        <p class="text-[10px]">{{ review.created_at }}</p>
+                                        <p class="text-[10px]">{{ formatDate(review.created_at) }}</p>
                                     </div>
                                 </div>
                                 <div class="py-2 px-4 bg-[#c1c1c1] flex justify-center items-start rounded">
@@ -121,6 +121,8 @@
 </template>
 <script setup>
 import { onMounted } from "vue";
+import moment from 'moment';
+
 import MCard from '~/components/movie/MCard.vue';
 
 import "vue3-carousel/dist/carousel.css";
@@ -142,6 +144,10 @@ const recommendations = ref({});
 
 const addCommas = (num) => {
     return num > 0? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : num;
+}
+
+const formatDate = (date) => {
+    return moment(date).format('MMMM D, YYYY');
 }
 
 onMounted(() => {
